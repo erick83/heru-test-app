@@ -4,6 +4,7 @@ import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 
 import DrawerComponent from '../components/drawer.component';
+import Colors from '../colors';
 
 const styles = {
   container: {
@@ -19,6 +20,7 @@ const styles = {
     justifyContent: 'center',
     paddingLeft: 10,
     paddingRight: 10,
+    backgroundColor: Colors.PAPER,
   },
 };
 
@@ -81,7 +83,7 @@ const HomeScreen = ({navigation}) => {
             ...styles.buttonContainer,
             height: checkOrientation(60, '25%'),
           }}>
-          <Button onPress={buttonHandler} color="#2d2c3c" title="Users List" />
+          <Button onPress={buttonHandler} color="#2d2c3c" title="Lista de Usuarios" />
         </View>
       </SafeAreaView>
     </DrawerComponent>

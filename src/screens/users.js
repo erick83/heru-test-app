@@ -10,13 +10,13 @@ import {useDispatch, useSelector} from 'react-redux';
 import DrawerComponent from '../components/drawer.component';
 import TextWrapperComponent from '../components/text-wrapper.component';
 import {actionCreators} from '../redux/users/actions';
+import Colors from '../colors';
 
-const style = StyleSheet.create({
-  title: {
-    textAlign: 'center',
-    fontSize: 14,
+const styles = StyleSheet.create({
+  container: {
     paddingTop: 10,
-    paddingBottom: 10,
+    backgroundColor: Colors.PAPER,
+    height: '100%',
   },
   list: {
     fontWeight: '500',
@@ -24,7 +24,7 @@ const style = StyleSheet.create({
     paddingTop: 5,
     paddingBottom: 5,
     borderBottomWidth: 1,
-    borderBottomColor: '#bbb',
+    borderBottomColor: Colors.DIVIDER,
     fontSize: 12,
   },
 });
@@ -45,10 +45,7 @@ const UsersScreen = ({navigation}) => {
   return (
     <DrawerComponent navigation={navigation}>
       <SafeAreaView>
-        <ScrollView>
-          <TextWrapperComponent style={style.title}>
-            Users List
-          </TextWrapperComponent>
+        <ScrollView style={styles.container}>
           {users &&
             users.map((user, key) => (
               <TouchableHighlight
@@ -56,7 +53,7 @@ const UsersScreen = ({navigation}) => {
                 onPress={buttonHandler(user)}
                 underlayColor="#ccc"
                 activeOpacity={0.6}>
-                <TextWrapperComponent style={style.list}>
+                <TextWrapperComponent style={styles.list}>
                   {user.name}
                 </TextWrapperComponent>
               </TouchableHighlight>

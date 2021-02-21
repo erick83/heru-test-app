@@ -4,12 +4,13 @@ import {DrawerLayoutAndroid, View} from 'react-native';
 
 import {actionCreators} from '../redux/controls/actions';
 import DrawerButtonComponent from './drawer-button.component';
+import Colors from '../colors';
 
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#ecf0f1',
     paddingTop: 5,
+    backgroundColor: Colors.PAPER,
   },
   button: {
     width: '100%',
@@ -46,8 +47,8 @@ const DrawerComponent = ({children, navigation}) => {
   const navigationView = () => {
     return (
       <View style={styles.container}>
-        <DrawerButtonComponent title="Home" onPress={nav('Home')} />
-        <DrawerButtonComponent title="Users" onPress={nav('Users')} />
+        <DrawerButtonComponent title="Inicio" onPress={nav('Home')} />
+        <DrawerButtonComponent title="Lista de Usuarios" onPress={nav('Users')} />
       </View>
     );
   };

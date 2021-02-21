@@ -2,11 +2,14 @@ import * as React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import DrawerComponent from '../components/drawer.component';
 import TextWrapperComponent from '../components/text-wrapper.component';
+import Colors from '../colors';
 
 const style = StyleSheet.create({
   container: {
     paddingTop: 15,
     paddingBottom: 5,
+    backgroundColor: Colors.PAPER,
+    height: '100%',
   },
   detail: {
     fontWeight: '500',

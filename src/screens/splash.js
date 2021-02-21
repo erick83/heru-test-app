@@ -1,5 +1,7 @@
 import React from 'react';
 import {View, Image} from 'react-native';
+import TextWrapperComponent from '../components/text-wrapper.component';
+
 import Colors from '../colors';
 
 const styles = {
@@ -24,6 +26,11 @@ const styles = {
     width: 80,
     height: 80,
   },
+  text: {
+    width: 120,
+    color: Colors.WHITE,
+    textAlign: 'center',
+  },
 };
 
 const Splash = () => {
@@ -32,6 +39,10 @@ const Splash = () => {
       <View style={styles.imgWrapper}>
         <Image style={styles.logo} source={require('../resources/logo.png')} />
       </View>
+
+      <TextWrapperComponent style={styles.text}>
+        Aplicacion de Prueba de Heru
+      </TextWrapperComponent>
     </View>
   );
 };

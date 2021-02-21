@@ -30,7 +30,7 @@ const styles = {
 const NavigatorComponent = () => {
   const splash = useSelector((store) => store.controls.splash);
   const dispatch = useDispatch();
-  const title = 'Bienvenido';
+  const title = 'Test';
   const [month, date, year] = new Date().toLocaleDateString('en-US').split('/');
   const [hour, minute] = new Date().toLocaleTimeString('en-US').split(/:| /);
 
@@ -39,7 +39,7 @@ const NavigatorComponent = () => {
   if (splash) {
     setTimeout(() => {
       dispatch(actionCreators.hideSplash());
-    }, 1000);
+    }, 5000);
   }
 
   return (
