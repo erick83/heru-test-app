@@ -7,5 +7,5 @@ export const actionTypes = {
 
 export const actionCreators = {
   getUsers: () => ({type: actionTypes.GET_USERS}),
-  storeUsers: () => ({type: actionTypes.STORE_USERS}),
+  storeUsers: (payload) => ({type: actionTypes.STORE_USERS, payload}),
 };
