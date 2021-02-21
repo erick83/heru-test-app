@@ -6,13 +6,21 @@ import Geolocation from '@react-native-community/geolocation';
 const styles = StyleSheet.create({
   container: {
     // ...StyleSheet.absoluteFillObject,
-    height: '90%',
+    height: '85%',
     // width: 400,
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  buttonContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    height: '15%',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 });
 
@@ -38,7 +46,9 @@ const HomeScreen = ({navigation}) => {
           {loc && <Marker coordinate={loc} />}
         </MapView>
       </View>
-      <Button onPress={buttonHandler} title="Users List" />
+      <View style={styles.buttonContainer}>
+        <Button onPress={buttonHandler} color="#2d2c3c" title="Users List" />
+      </View>
     </SafeAreaView>
   );
 };

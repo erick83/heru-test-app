@@ -10,6 +10,17 @@ import UserDetailScreen from './src/screens/user-detail';
 
 const Stack = createStackNavigator();
 
+const screenStyles = {
+  headerStyle: {
+    backgroundColor: '#2d2c3c',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+    fontSize: 14,
+  },
+};
+
 const MyStack = () => {
   const title = 'Bienvenido';
   const d = new Date();
@@ -22,10 +33,21 @@ const MyStack = () => {
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{title: `${title} ${date}`}}
+            options={{
+              title: `${title} ${date}`,
+              ...screenStyles,
+            }}
           />
-          <Stack.Screen name="Users" component={UsersScreen} />
-          <Stack.Screen name="UserDetail" component={UserDetailScreen} />
+          <Stack.Screen
+            name="Users"
+            component={UsersScreen}
+            options={{...screenStyles}}
+          />
+          <Stack.Screen
+            name="UserDetail"
+            component={UserDetailScreen}
+            options={{...screenStyles}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
