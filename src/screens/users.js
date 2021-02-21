@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import {Button, SafeAreaView, ScrollView, Text} from 'react-native';
+import {Pressable, SafeAreaView, ScrollView, Text} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionCreators} from '../redux/users/actions';
 
@@ -23,7 +23,9 @@ const UsersScreen = ({navigation}) => {
         <Text>Users List</Text>
         {users &&
           users.map((user, key) => (
-            <Button key={key} onPress={buttonHandler(user)} title={user.name} />
+            <Pressable key={key} onPress={buttonHandler(user)}>
+              <Text>{user.name}</Text>
+            </Pressable>
           ))}
       </ScrollView>
     </SafeAreaView>
