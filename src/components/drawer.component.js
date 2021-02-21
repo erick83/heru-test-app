@@ -46,8 +46,6 @@ const DrawerComponent = ({children, navigation}) => {
   const navigationView = () => {
     return (
       <View style={styles.container}>
-        {/* <Button title="Home" style={styles.button} onPress={nav('Home')} /> */}
-        {/* <Button title="Users List" onPress={nav('Users')} /> */}
         <DrawerButtonComponent title="Home" onPress={nav('Home')} />
         <DrawerButtonComponent title="Users" onPress={nav('Users')} />
       </View>
