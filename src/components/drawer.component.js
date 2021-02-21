@@ -1,35 +1,27 @@
 import React, {useEffect, useRef} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {Button, DrawerLayoutAndroid, View} from 'react-native';
 
+import {actionCreators} from '../redux/controls/actions';
+
 const styles = {
-  headerStyle: {
-    backgroundColor: '#2d2c3c',
-  },
-  headerTintColor: '#fff',
-  headerTitleStyle: {
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 16,
+    width: '100%',
   },
   navigationContainer: {
     backgroundColor: '#ecf0f1',
-  },
-  paragraph: {
-    padding: 16,
-    fontSize: 15,
-    textAlign: 'center',
   },
 };
 
 const DrawerComponent = ({children, navigation}) => {
   const drawer = useRef(null);
+  const dispatch = useDispatch();
   const show = useSelector((store) => store.controls.drawerShow);
+
   useEffect(() => {
     if (show) {
       drawer.current.openDrawer();
@@ -37,6 +29,12 @@ const DrawerComponent = ({children, navigation}) => {
       drawer.current.closeDrawer();
     }
   }, [show]);
+
+  function closeDrawerHandler() {
+    if (show) {
+      dispatch(actionCreators.toggleDrawer());
+    }
+  }
 
   const navigationView = () => {
     return (
@@ -54,7 +52,9 @@ const DrawerComponent = ({children, navigation}) => {
   return (
     <DrawerLayoutAndroid
       ref={drawer}
+      drawerWidth={200}
       drawerPosition="right"
+      onDrawerClose={closeDrawerHandler}
       renderNavigationView={navigationView}>
       {children}
     </DrawerLayoutAndroid>
