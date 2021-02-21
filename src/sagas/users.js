@@ -1,4 +1,4 @@
-import {select, put, take, takeEvery, call} from 'redux-saga/effects';
+import {put, takeEvery, call} from 'redux-saga/effects';
 
 import {get} from '../services/fetchServices';
 import {actionCreators, actionTypes} from '../redux/users/actions';
