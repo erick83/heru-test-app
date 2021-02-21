@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -10,7 +10,7 @@ import UserDetailScreen from './src/screens/user-detail';
 
 const Stack = createStackNavigator();
 
-const screenStyles = {
+const styles = {
   headerStyle: {
     backgroundColor: '#2d2c3c',
   },
@@ -35,18 +35,18 @@ const MyStack = () => {
             component={HomeScreen}
             options={{
               title: `${title} ${date}`,
-              ...screenStyles,
+              ...styles,
             }}
           />
           <Stack.Screen
             name="Users"
             component={UsersScreen}
-            options={{...screenStyles}}
+            options={{...styles}}
           />
           <Stack.Screen
             name="UserDetail"
             component={UserDetailScreen}
-            options={{...screenStyles}}
+            options={{...styles}}
           />
         </Stack.Navigator>
       </NavigationContainer>
