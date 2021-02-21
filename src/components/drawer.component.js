@@ -1,4 +1,5 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef} from 'react';
+import {useSelector} from 'react-redux';
 import {Button, DrawerLayoutAndroid, View} from 'react-native';
 
 const styles = {
@@ -26,25 +27,25 @@ const styles = {
   },
 };
 
-const DrawerComponent = () => {
+const DrawerComponent = ({children, navigation}) => {
   const drawer = useRef(null);
-  const [drawerPosition, setDrawerPosition] = useState('left');
-  const changeDrawerPosition = () => {
-    if (drawerPosition === 'left') {
-      setDrawerPosition('right');
+  const show = useSelector((store) => store.controls.drawerShow);
+  useEffect(() => {
+    if (show) {
+      drawer.current.openDrawer();
     } else {
-      setDrawerPosition('left');
+      drawer.current.closeDrawer();
     }
-  };
+  }, [show]);
 
   const navigationView = () => {
     return (
       <View style={[styles.container, styles.navigationContainer]}>
         <Button title="X" onPress={() => drawer.current.closeDrawer()} />
-        <Button title="Home" onPress={() => drawer.current.closeDrawer()} />
+        <Button title="Home" onPress={() => navigation.navigate('Home')} />
         <Button
           title="Users List"
-          onPress={() => drawer.current.closeDrawer()}
+          onPress={() => navigation.navigate('Users')}
         />
       </View>
     );
@@ -53,10 +54,10 @@ const DrawerComponent = () => {
   return (
     <DrawerLayoutAndroid
       ref={drawer}
-      drawerWidth={200}
-      drawerPosition={drawerPosition}
-      renderNavigationView={navigationView}
-    />
+      drawerPosition="right"
+      renderNavigationView={navigationView}>
+      {children}
+    </DrawerLayoutAndroid>
   );
 };
 

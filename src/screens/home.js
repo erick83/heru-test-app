@@ -2,6 +2,7 @@ import * as React from 'react';
 import {SafeAreaView, View, StyleSheet, Button} from 'react-native';
 import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
+import DrawerComponent from '../components/drawer.component';
 
 const styles = StyleSheet.create({
   container: {
@@ -38,18 +39,20 @@ const HomeScreen = ({navigation}) => {
   }
 
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <MapView
-          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-          style={styles.map}>
-          {loc && <Marker coordinate={loc} />}
-        </MapView>
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button onPress={buttonHandler} color="#2d2c3c" title="Users List" />
-      </View>
-    </SafeAreaView>
+    <DrawerComponent navigation={navigation}>
+      <SafeAreaView>
+        <View style={styles.container}>
+          <MapView
+            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+            style={styles.map}>
+            {loc && <Marker coordinate={loc} />}
+          </MapView>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button onPress={buttonHandler} color="#2d2c3c" title="Users List" />
+        </View>
+      </SafeAreaView>
+    </DrawerComponent>
   );
 };
 
