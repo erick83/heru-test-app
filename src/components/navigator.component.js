@@ -11,17 +11,18 @@ import {
 } from '../screens';
 import HbButtonComponent from './hb-button.component';
 import {actionCreators} from '../redux/controls/actions';
+import Colors from '../colors';
 
 const Stack = createStackNavigator();
 
 const styles = {
   headerStyle: {
-    backgroundColor: '#2d2c3c',
+    backgroundColor: Colors.PRIMARY,
   },
-  headerTintColor: '#fff',
+  headerTintColor: Colors.WHITE,
   headerTitleStyle: {
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 13,
     fontFamily: 'Arial',
   },
 };
@@ -30,8 +31,10 @@ const NavigatorComponent = () => {
   const splash = useSelector((store) => store.controls.splash);
   const dispatch = useDispatch();
   const title = 'Bienvenido';
-  const d = new Date();
-  const date = `${d.getUTCDate()}-${d.getUTCMonth()}-${d.getFullYear()}`;
+  const [month, date, year] = new Date().toLocaleDateString('en-US').split('/');
+  const [hour, minute] = new Date().toLocaleTimeString('en-US').split(/:| /);
+
+  const fullDate = `${date}-${month}-${year} ${hour}:${minute}`;
 
   if (splash) {
     setTimeout(() => {
@@ -50,7 +53,7 @@ const NavigatorComponent = () => {
               name="Home"
               component={HomeScreen}
               options={{
-                title: `${title} ${date}`,
+                title: `${title}  ${fullDate}`,
                 ...styles,
                 headerRight: () => <HbButtonComponent />,
               }}
@@ -58,12 +61,20 @@ const NavigatorComponent = () => {
             <Stack.Screen
               name="Users"
               component={UsersScreen}
-              options={{...styles, headerRight: () => <HbButtonComponent />}}
+              options={{
+                ...styles,
+                title: 'Lista de Usuarios',
+                headerRight: () => <HbButtonComponent />,
+              }}
             />
             <Stack.Screen
               name="UserDetail"
               component={UserDetailScreen}
-              options={{...styles, headerRight: () => <HbButtonComponent />}}
+              options={{
+                ...styles,
+                title: 'Detalle de Usuario',
+                headerRight: () => <HbButtonComponent />,
+              }}
             />
           </Stack.Navigator>
         </NavigationContainer>
