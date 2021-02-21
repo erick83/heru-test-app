@@ -1,11 +1,11 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-const styles = {fontFamily: 'Arial'};
-
 const TextWrapperComponent = (props) => {
+  const styles = {fontFamily: 'Arial'};
+
   return (
-    <Text {...props} style={{...props.style, ...styles}}>
+    <Text {...props} style={[props.style, styles]}>
       {props.children}
     </Text>
   );
