@@ -1,8 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import {Pressable, SafeAreaView, ScrollView, Text} from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {actionCreators} from '../redux/users/actions';
+
+const style = StyleSheet.create({
+  title: {
+    textAlign: 'center',
+    fontSize: 14,
+    paddingTop: 10,
+    paddingBottom: 10,
+  },
+  list: {
+    fontWeight: '500',
+    paddingLeft: 20,
+    paddingTop: 5,
+    paddingBottom: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: '#bbb',
+    fontSize: 12,
+  },
+});
 
 const UsersScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -20,12 +44,16 @@ const UsersScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Text>Users List</Text>
+        <Text style={style.title}>Users List</Text>
         {users &&
           users.map((user, key) => (
-            <Pressable key={key} onPress={buttonHandler(user)}>
-              <Text>{user.name}</Text>
-            </Pressable>
+            <TouchableHighlight
+              key={key}
+              onPress={buttonHandler(user)}
+              underlayColor="#ccc"
+              activeOpacity={0.6}>
+              <Text style={style.list}>{user.name}</Text>
+            </TouchableHighlight>
           ))}
       </ScrollView>
     </SafeAreaView>
