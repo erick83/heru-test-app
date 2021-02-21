@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import DrawerComponent from '../components/drawer.component';
+import TextWrapperComponent from '../components/text-wrapper.component';
 
 const style = StyleSheet.create({
   container: {
@@ -22,14 +23,22 @@ const UserDetailScreen = ({route, navigation}) => {
   return (
     <DrawerComponent navigation={navigation}>
       <SafeAreaView style={style.container}>
-        <Text style={style.detail}>Name: {params.name}</Text>
-        <Text style={style.detail}>Email: {params.email}</Text>
-        <Text style={style.detail}>Phone: {params.phone}</Text>
-        <Text style={style.detail}>
+        <TextWrapperComponent style={style.detail}>
+          Name: {params.name}
+        </TextWrapperComponent>
+        <TextWrapperComponent style={style.detail}>
+          Email: {params.email}
+        </TextWrapperComponent>
+        <TextWrapperComponent style={style.detail}>
+          Phone: {params.phone}
+        </TextWrapperComponent>
+        <TextWrapperComponent style={style.detail}>
           Address: {params.address.street} {params.address.suite}{' '}
           {params.address.city}
-        </Text>
-        <Text style={style.detail}>Zip: {params.address.zipcode}</Text>
+        </TextWrapperComponent>
+        <TextWrapperComponent style={style.detail}>
+          Zip: {params.address.zipcode}
+        </TextWrapperComponent>
       </SafeAreaView>
     </DrawerComponent>
   );

@@ -14,18 +14,7 @@ const styles = {
   headerTitleStyle: {
     fontWeight: 'bold',
     fontSize: 14,
-  },
-  bgContainer: {
-    paddingRight: 15,
-  },
-  linesContainer: {
-    paddingTop: 3,
-  },
-  hbLine: {
-    paddingBottom: 3,
-    marginBottom: 3,
-    backgroundColor: '#fff',
-    width: 20,
+    fontFamily: 'Arial',
   },
 };
 

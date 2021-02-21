@@ -4,11 +4,11 @@ import {
   SafeAreaView,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableHighlight,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import DrawerComponent from '../components/drawer.component';
+import TextWrapperComponent from '../components/text-wrapper.component';
 import {actionCreators} from '../redux/users/actions';
 
 const style = StyleSheet.create({
@@ -46,7 +46,9 @@ const UsersScreen = ({navigation}) => {
     <DrawerComponent navigation={navigation}>
       <SafeAreaView>
         <ScrollView>
-          <Text style={style.title}>Users List</Text>
+          <TextWrapperComponent style={style.title}>
+            Users List
+          </TextWrapperComponent>
           {users &&
             users.map((user, key) => (
               <TouchableHighlight
@@ -54,7 +56,9 @@ const UsersScreen = ({navigation}) => {
                 onPress={buttonHandler(user)}
                 underlayColor="#ccc"
                 activeOpacity={0.6}>
-                <Text style={style.list}>{user.name}</Text>
+                <TextWrapperComponent style={style.list}>
+                  {user.name}
+                </TextWrapperComponent>
               </TouchableHighlight>
             ))}
         </ScrollView>

@@ -1,6 +1,7 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {TouchableHighlight} from 'react-native-gesture-handler';
+import TextWrapperComponent from './text-wrapper.component';
 
 const styles = {
   container: {
@@ -19,7 +20,7 @@ const DrawerButtonComponent = ({title, onPress}) => {
         onPress={onPress}
         underlayColor="#ccc"
         activeOpacity={0.6}>
-        <Text style={styles.text}>{title}</Text>
+        <TextWrapperComponent style={styles.text}>{title}</TextWrapperComponent>
       </TouchableHighlight>
     </View>
   );
