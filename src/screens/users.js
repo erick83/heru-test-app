@@ -51,7 +51,7 @@ const UsersScreen = ({navigation}) => {
               <TouchableHighlight
                 key={key}
                 onPress={buttonHandler(user)}
-                underlayColor="#ccc"
+                underlayColor={Colors.SECONDARY}
                 activeOpacity={0.6}>
                 <TextWrapperComponent style={styles.list}>
                   {user.name}
