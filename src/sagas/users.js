@@ -5,15 +5,11 @@ import {actionCreators, actionTypes} from '../redux/users/actions';
 
 export function* usersSaga() {
   yield takeEvery(actionTypes.GET_USERS, fetchUsers);
-  console.log('Hello Sagas!');
 }
 
 function* fetchUsers(action) {
   try {
-    const response = yield call(
-      get,
-      'https://jsonplaceholder.typicode.com/users',
-    );
+    const response = yield call(get);
     yield put(actionCreators.storeUsers(response));
   } catch (error) {
     console.log(error);

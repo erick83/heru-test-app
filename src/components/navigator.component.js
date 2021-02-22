@@ -39,7 +39,7 @@ const NavigatorComponent = () => {
   if (splash) {
     setTimeout(() => {
       dispatch(actionCreators.hideSplash());
-    }, 5000);
+    }, 1000);
   }
 
   return (

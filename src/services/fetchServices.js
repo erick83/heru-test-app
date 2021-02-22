@@ -1,3 +1,5 @@
+import {URL_BASE} from 'react-native-dotenv';
+
 async function fetchBase(path, opt) {
   try {
     const response = await fetch(path, opt);
@@ -10,7 +12,7 @@ async function fetchBase(path, opt) {
   }
 }
 
-export const get = (path) => {
+export const get = () => {
   const method = 'get';
-  return fetchBase(path, {method});
+  return fetchBase(URL_BASE, {method});
 };
